@@ -1,0 +1,170 @@
+/* main.component.css */
+
+/* ... (previous styles) */
+
+/* Set the background gradient */
+.page-content {
+   background: linear-gradient(120deg, #e6f3ff, #d6ebff, #c2e2ff, #ace0ff, #99ddff, #88d9ff);
+ }
+ 
+ /* Weather card styles */
+ .card-weather {
+   background-color: rgba(255, 255, 255, 0.9);
+   padding: 20px;
+   border-radius: 10px;
+   margin-bottom: 20px;
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+   transition: background-color 0.3s ease-in-out;
+ }
+ 
+ /* On hover, remove the background color change */
+ .card-weather:hover {
+   background-color: rgba(255, 255, 255, 0.9);
+ }
+ 
+ /* Weakly weather item styles */
+ .weakly-weather-item {
+   background-color: rgba(255, 255, 255, 0.9);
+   padding: 15px;
+   border-radius: 10px;
+   margin: 10px 0;
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+   transition: background-color 0.3s ease-in-out;
+   cursor: default;
+ }
+ 
+ /* On hover, remove the background color change */
+ .weakly-weather-item:hover {
+   background-color: rgba(255, 255, 255, 0.9);
+   cursor: default;
+ }
+ 
+ /* Next 5 Days card styles */
+ .next-days-card {
+   background-color: rgba(255, 255, 255, 0.7);
+   padding: 30px; /* Increase the padding for a larger card */
+   border-radius: 10px;
+   margin-bottom: 20px;
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+   transition: background-color 0.3s ease-in-out;
+   cursor: default;
+ }
+ 
+ /* Weather data styles */
+ .weather-data {
+   text-align: center;
+ }
+ 
+ .weather-date-location {
+   text-align: center;
+ }
+ 
+ .weather-date {
+   font-size: 14px;
+ }
+ 
+ /* Weakly weather item styles */
+ .weakly-weather-item {
+   background-color: rgba(255, 255, 255, 0.9);
+   /* ... (previous styles) */
+ }
+ 
+ /* On hover, remove the background color change and cursor change */
+ .weakly-weather-item:hover {
+   background-color: rgba(255, 255, 255, 0.9);
+   cursor: default;
+ }
+ 
+ /* Buttons styles */
+ .btn-primary {
+   background-color: #007bff;
+   border: none;
+ }
+ 
+ .btn-primary:hover {
+   background-color: #0056b3;
+ }
+ 
+ /* Primary color for text and important elements */
+ .text-primary {
+   color: #007bff;
+ }
+ 
+ /* Secondary color for additional elements */
+ .text-secondary {
+   color: #333;
+ }
+ 
+ /* Gray text color */
+ .text-gray {
+   color: #888;
+ }
+ 
+ /* Search form styles */
+ .search-form {
+   display: flex;
+   flex-wrap: wrap;
+   gap: 10px;
+   margin-bottom: 20px;
+   justify-content: center;
+ }
+ 
+ .form-control {
+   flex: 1;
+   max-width: 200px;
+ }
+ 
+ .btn-primary {
+   flex: 0 0 auto;
+ }
+ 
+ /* Media queries for responsive layout */
+ 
+ /* For smaller screens (e.g., smartphones) */
+ @media only screen and (max-width: 767px) {
+   .card-weather {
+     padding: 15px;
+     margin-bottom: 10px;
+   }
+ 
+   .next-days-card {
+     padding: 20px;
+     margin-bottom: 10px;
+   }
+ 
+   .weakly-weather-item {
+     padding: 10px;
+     margin: 5px 0;
+   }
+ }
+ .not-found{
+   text-align: center;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   font-size: 18px;
+   color: #f00;
+   font-weight: bold;
+ }
+
+
+
+ .weather-data-container {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   /* You can adjust the margin and padding as per your layout */
+   margin: 20px;
+   padding: 10px;
+ }
+ 
+ .weather-image-container img {
+   /* Adjust the width and height of the image as needed */
+   width: 100px;
+   height: 100px;
+   /* You can add additional styles for positioning if required */
+ }
+ .centered-container{
+   background: linear-gradient(120deg, #e6f3ff, #d6ebff, #c2e2ff, #ace0ff, #99ddff, #88d9ff);
+
+ }
