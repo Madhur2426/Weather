@@ -13,7 +13,7 @@
   </div>
 </div>
 
-<div class="page-content page-container" id="page-content">
+<div class="page-content page-container m-0 p-0" id="page-content">
   <div class="padding">
     <div class="row justify-content-center">
       <div class="col-md-8 col-lg-6 grid-margin">
@@ -43,19 +43,21 @@
             </div>
           </div>
           
-        <div class="card card-weather next-days-card">
-          <div class="weather-date-location">
-            <h3 class="text-primary">Next 5 Days</h3>
-          </div>
-          <div class="weather-data d-flex justify-content-between weakly-weather">
-            <div class="weakly-weather-item text-center" *ngFor="let dayWeather of nextDaysData">
-              <p class="text-primary"><b>{{ dayWeather.day }}</b></p>
-              <p class="text-primary">{{ dayWeather.temperature | number: '1.2-2' }}&deg;C</p>
+          <div class="card card-weather next-days-card">
+            <div class="weather-date-location">
+              <h3 class="text-primary">Next 5 Days</h3>
+            </div>
+            <div class="weather-data row row-cols-lg-5 row-cols-md-3 row-cols-2" >
+              <div class="weakly-weather-item text-center col" *ngFor="let dayWeather of nextDaysData">
+                <!-- ngFor directive should be handled in your Angular component -->
+                <p class="text-primary text-nowrap test"><b>{{ dayWeather.day }}</b></p>
+                <p class="text-primary">{{ dayWeather.temperature | number: '1.2-2' }}&deg;C</p>
+              </div>
+              <!-- Add other weakly-weather-item divs here based on the data provided by *ngFor -->
             </div>
           </div>
-        </div>
+          
         <!-- weather card ends -->
       </div>
     </div>
   </div>
-</div>
