@@ -4,6 +4,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Weather } from '../interface/weather';
 import { Next } from '../interface/next';
 import { HttpErrorResponse } from '@angular/common/http';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-main',
@@ -85,7 +86,7 @@ export class MainComponent implements OnInit {
         } else {
           this.invalidCity = false;
           // Group and store weather data for the next 5 days
-          this.nextDaysData = this.groupWeatherDataByDay(data.list);
+          this.nextDaysData = this.groupWeatherDataByDay(data.list);          
         }
       },
       (error:HttpErrorResponse) => {
@@ -105,34 +106,33 @@ export class MainComponent implements OnInit {
  * @param weatherList The list of weather data to be grouped.
  * @returns An array of 'Next' objects representing weather data for each day.
  */
-  groupWeatherDataByDay(weatherList: any): Next[] {
-    // Group weather data by day for the next 5 days
-    const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-    const nextDaysData: Next[] = [];
+groupWeatherDataByDay(weatherList: any): Next[] {
+  // Group weather data by day for the next 5 days
+  const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+  const nextDaysData: Next[] = [];
 
-    let currentDay: Next | null = null;
-    for (const item of weatherList) {
-      const date = new Date(item.dt_txt);
-      const hour = date.getHours();
+  let currentDay: Next | null = null;
+  for (const item of weatherList) {
+    const date = moment(item.dt_txt).utcOffset(item.timezone / 60); // Convert to the correct time zone
 
-      // Start a new day when hour is 9 (morning)
-      if (hour === 9) {
-        currentDay = {
-          date: item.dt,
-          day: days[date.getDay()],
-          temperature: item.main.temp,
-        };
-        nextDaysData.push(currentDay);
-      } else if (currentDay) {
-        // Update the temperature of the current day for each 3-hour interval until 21 (evening)
-        if (hour >= 12 && hour <= 21) {
-          currentDay.temperature = item.main.temp;
-        } else if (hour > 21) {
-          // Stop updating the temperature after 21 (evening)
-          currentDay = null;
-        }
+    // Start a new day when hour is 9 (morning)
+    if (date.hours() === 9) {
+      currentDay = {
+        date: item.dt,
+        day: days[date.day()],
+        temperature: item.main.temp,
+      };
+      nextDaysData.push(currentDay);
+    } else if (currentDay) {
+      // Update the temperature of the current day for each 3-hour interval until 21 (evening)
+      if (date.hours() >= 12 && date.hours() <= 21) {
+        currentDay.temperature = item.main.temp;
+      } else if (date.hours() > 21) {
+        // Stop updating the temperature after 21 (evening)
+        currentDay = null;
       }
     }
-    return nextDaysData;
   }
+  return nextDaysData;
+}
 }
