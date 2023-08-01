@@ -67,6 +67,7 @@ export class MainComponent implements OnInit {
  * @returns A string representing the current date in the desired format.
  */
   getCurrentDate(): string {
+    //v
     // Implement the method to get the current date in the desired format
     const currentDate = new Date();
     return currentDate.toDateString();
