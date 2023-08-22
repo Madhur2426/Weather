@@ -13,12 +13,11 @@ export class WeatherService {
   /** 
    * Method to fetch weather data for a specific city
    * @param cityName
-   * @Returns an observable of type 'any' representing the weather data*/
+   * @Returns an observable of type 'any' representing the weather data
+   */
   getWeatherData(cityName: string): Observable<any> {
-    // Construct the API URL using the environment variables
     const apiUrl = `${environment.apiUrl}${cityName}&units=metric${environment.apiRemaining}${environment.apiKey}`;
-
-    // Perform an HTTP GET request to the API URL and return the observable
     return this.http.get<any>(apiUrl);
   }
+
 }
